@@ -1,59 +1,58 @@
 # Python Concurrency Practice
 
-## Цель проекта
+## Project Goal
 
-Цель проекта — изучить разные подходы к организации программ на Python и
-научиться применять их на практике. В ходе выполнения заданий были отработаны
-объектно-ориентированное, процедурное и функциональное программирование, работа
-с файлами и обработка ошибок. Особое внимание уделено конкурентному выполнению
-задач: созданию отдельных процессов с помощью `multiprocessing` и асинхронной
-работе с использованием `asyncio`.
+The goal of this project is to explore different approaches to structuring
+Python programs and learn how to apply them in practice. The exercises cover
+object-oriented, procedural, and functional programming, file handling, and
+error handling. Special attention is given to concurrent task execution:
+creating separate processes with `multiprocessing` and asynchronous work with
+`asyncio`.
 
-## Задание 1. Экзамен
+## Exercise 1: Exam
 
-В папке `exercise1` реализована симуляция экзамена. Студенты находятся в общей
-очереди, а каждый экзаменатор принимает их в отдельном процессе. Результат
-экзамена зависит от ответов студента, пола участника, настроения экзаменатора и
-случайных факторов, заданных в условии.
+The `exercise1` directory contains an exam simulation. Students wait in a
+shared queue, and each examiner conducts exams in a separate process. Exam
+results depend on the student's answers, the participant's gender, the
+examiner's mood, and random factors specified in the task.
 
-Программа:
+The program:
 
-- читает списки студентов, экзаменаторов и вопросов из текстовых файлов;
-- распределяет студентов между экзаменаторами через общую очередь;
-- моделирует ответы, результаты экзамена и перерывы экзаменаторов;
-- обновляет в консоли текущую статистику;
-- после завершения выводит итоговые таблицы, лучших студентов, экзаменаторов и
-  вопросы.
+- reads lists of students, examiners, and questions from text files;
+- assigns students to examiners through a shared queue;
+- simulates answers, exam results, and examiner breaks;
+- updates live statistics in the console;
+- prints summary tables and highlights the top students, examiners, and
+  questions when it finishes.
 
-В задании применяются ООП и классы данных, файловый ввод, модуль
-`multiprocessing`, межпроцессное взаимодействие, случайные величины и обработка
-исключений.
+This exercise uses object-oriented programming and data classes, file input,
+the `multiprocessing` module, inter-process communication, random values, and
+exception handling.
 
-Запуск:
+Run it with:
 
 ```bash
 python exercise1/task1.py
 ```
 
-## Задание 2. Скачивание изображений
+## Exercise 2: Downloading Images
 
-В папке `exercise2` находится обработчик ссылок для одновременного скачивания
-изображений. Пользователь выбирает папку для сохранения и последовательно вводит
-ссылки, при этом загрузки выполняются параллельно с дальнейшим вводом.
+The `exercise2` directory contains a URL handler for downloading multiple
+images at the same time. The user selects a destination folder and enters URLs
+one by one while downloads run in parallel with further input.
 
-Программа:
+The program:
 
-- проверяет существование папки и доступ на запись;
-- создаёт отдельную асинхронную задачу для каждой ссылки;
-- ожидает завершения всех начатых загрузок;
-- не прекращает работу при ошибке отдельного запроса;
-- выводит итоговую таблицу успешных и неуспешных загрузок.
+- checks that the destination folder exists and is writable;
+- creates a separate asynchronous task for each URL;
+- waits for all started downloads to finish;
+- continues running if an individual request fails;
+- prints a summary table of successful and failed downloads.
 
-В задании используются `asyncio`, асинхронные задачи, перенос блокирующих
-операций в отдельные потоки, HTTP-запросы, работа с путями и обработка сетевых
-ошибок.
+This exercise uses `asyncio`, asynchronous tasks, running blocking operations
+in separate threads, HTTP requests, path handling, and network error handling.
 
-Для работы необходим пакет `requests`:
+The `requests` package is required:
 
 ```bash
 pip install requests
